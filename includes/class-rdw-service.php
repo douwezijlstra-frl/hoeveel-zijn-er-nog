@@ -102,8 +102,8 @@ class Hoeveel_Zijn_Er_Nog_Rdw_Service {
 
 		$data = $this->fetch_api( $args );
 
-		if ( ! empty( $data ) && isset( $data[0]['count'] ) ) {
-			return (int) $data[0]['count'];
+		if ( ! empty( $data ) && isset( $data[0]['count_kenteken'] ) ) {
+			return (int) $data[0]['count_kenteken'];
 		}
 
 		return 0;
@@ -131,8 +131,8 @@ class Hoeveel_Zijn_Er_Nog_Rdw_Service {
 
 		$data = $this->fetch_api( $args );
 
-		if ( ! empty( $data ) && isset( $data[0]['count'] ) ) {
-			return (int) $data[0]['count'];
+		if ( ! empty( $data ) && isset( $data[0]['count_kenteken'] ) ) {
+			return (int) $data[0]['count_kenteken'];
 		}
 
 		return 0;
