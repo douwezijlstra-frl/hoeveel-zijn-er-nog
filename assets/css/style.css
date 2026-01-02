@@ -15,28 +15,29 @@
 }
 
 .rdw-stat-item {
-    background: #f9f9f9;
+    background: rgba(0, 0, 0, 0.02);
     padding: 20px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease;
 }
 
 .rdw-stat-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .rdw-stat-label {
     display: block;
     font-size: 0.85em;
-    color: #666;
+    color: inherit;
+    opacity: 0.7;
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -47,13 +48,14 @@
     display: block;
     font-size: 1.5em;
     font-weight: 700;
-    color: #2c3338;
+    color: inherit;
 }
 
 .rdw-stat-value small {
     display: block;
     font-size: 0.5em;
-    color: #888;
+    color: inherit;
+    opacity: 0.6;
     margin-top: 4px;
     font-weight: normal;
 }

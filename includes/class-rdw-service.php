@@ -175,4 +175,67 @@ class Hoeveel_Zijn_Er_Nog_Rdw_Service {
 
 		return ( ! empty( $data ) ) ? $data[0] : null;
 	}
+	/**
+	 * Format a license plate string into Dutch standard formats (Sidecodes 1-14).
+	 *
+	 * @param string $kenteken Raw license plate string (e.g., PH29RZ).
+	 * @return string Formatted license plate (e.g., PH-29-RZ) or original if no match.
+	 */
+	public function format_license_plate( $kenteken ) {
+		$kenteken = strtoupper( preg_replace( '/[^A-Z0-9]/i', '', $kenteken ) );
+		$length   = strlen( $kenteken );
+
+		// Sidecode patterns (roughly ordered by commonality and specificity)
+		$patterns = array(
+			// Sidecode 1: XX-99-99
+			'/^([A-Z]{2})(\d{2})(\d{2})$/',
+			// Sidecode 2: 99-99-XX
+			'/^(\d{2})(\d{2})([A-Z]{2})$/',
+			// Sidecode 3: 99-XX-99
+			'/^(\d{2})([A-Z]{2})(\d{2})$/',
+			// Sidecode 4: XX-99-XX
+			'/^([A-Z]{2})(\d{2})([A-Z]{2})$/',
+			// Sidecode 5: XX-XX-99
+			'/^([A-Z]{2})([A-Z]{2})(\d{2})$/',
+			// Sidecode 6: 99-XX-XX
+			'/^(\d{2})([A-Z]{2})([A-Z]{2})$/',
+			// Sidecode 7: 99-XXX-9
+			'/^(\d{2})([A-Z]{3})(\d{1})$/',
+			// Sidecode 8: 9-XXX-99
+			'/^(\d{1})([A-Z]{3})(\d{2})$/',
+			// Sidecode 9: XX-999-X
+			'/^([A-Z]{2})(\d{3})([A-Z]{1})$/',
+			// Sidecode 10: X-999-XX
+			'/^([A-Z]{1})(\d{3})([A-Z]{2})$/',
+			// Sidecode 11: XXX-99-X
+			'/^([A-Z]{3})(\d{2})([A-Z]{1})$/',
+			// Sidecode 12: X-99-XXX
+			'/^([A-Z]{1})(\d{2})([A-Z]{3})$/',
+			// Sidecode 13: 9-XX-999
+			'/^(\d{1})([A-Z]{2})(\d{3})$/',
+			// Sidecode 14: 999-XX-9
+			'/^(\d{3})([A-Z]{2})(\d{1})$/',
+		);
+
+		foreach ( $patterns as $pattern ) {
+			if ( preg_match( $pattern, $kenteken, $matches ) ) {
+				array_shift( $matches ); // Remove full match
+				return implode( '-', $matches );
+			}
+		}
+
+		// Fallback for non-standard lengths or unknown sidecodes (like HVN-52-NK which is 3-2-2)
+		// Logic: insert dash when character type changes (letter <-> number)
+		// But valid Dutch plates often group same types with dashes (e.g. 99-99-XX).
+		// The regexes above cover the standard cases where same types are adjacent.
+		// If we fall through here, use a simple heuristic: split groups of letters and numbers.
+		
+		// Attempt to split into groups of letters and numbers
+		if ( preg_match_all( '/[A-Z]+|\d+/', $kenteken, $matches ) ) {
+			// join with dashes
+			return implode( '-', $matches[0] );
+		}
+
+		return $kenteken;
+	}
 }

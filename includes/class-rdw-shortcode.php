@@ -77,11 +77,11 @@ class Hoeveel_Zijn_Er_Nog_Shortcode {
 
 		// Prepare display data.
 		$oldest_text = $oldest 
-			? esc_html( $oldest['kenteken'] ) . '<br><small>' . esc_html( $this->format_date( $oldest['datum_eerste_toelating'] ) ) . '</small>' 
+			? esc_html( $this->service->format_license_plate( $oldest['kenteken'] ) ) . '<br><small>' . esc_html( $this->format_date( $oldest['datum_eerste_toelating'] ) ) . '</small>' 
 			: 'N/A';
 		
 		$newest_text = $newest 
-			? esc_html( $newest['kenteken'] ) . '<br><small>' . esc_html( $this->format_date( $newest['datum_eerste_toelating'] ) ) . '</small>' 
+			? esc_html( $this->service->format_license_plate( $newest['kenteken'] ) ) . '<br><small>' . esc_html( $this->format_date( $newest['datum_eerste_toelating'] ) ) . '</small>' 
 			: 'N/A';
 
 		ob_start();
