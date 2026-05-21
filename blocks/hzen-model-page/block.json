@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "hoeveel-zijn-er-nog/hzen-model-page",
+	"version": "0.1.0",
+	"title": "HZEN Model Page",
+	"category": "widgets",
+	"icon": "dashboard",
+	"description": "Full per-model dashboard: current stats, history chart, and metadata.",
+	"keywords": ["rdw", "voertuig", "model", "dashboard", "hzen"],
+	"textdomain": "hoeveel-zijn-er-nog",
+	"attributes": {
+		"slug": { "type": "string", "default": "" },
+		"range": { "type": "string", "default": "12m" },
+		"metric": { "type": "string", "default": "total" }
+	},
+	"supports": { "html": false },
+	"render": "file:./render.php"
+}

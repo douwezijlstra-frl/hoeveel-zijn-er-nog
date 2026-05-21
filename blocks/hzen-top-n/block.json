@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "hoeveel-zijn-er-nog/hzen-top-n",
+	"version": "0.1.0",
+	"title": "HZEN Top N Leaderboard",
+	"category": "widgets",
+	"icon": "list-view",
+	"description": "Leaderboard table of tracked models ordered by a metric.",
+	"keywords": ["rdw", "voertuig", "leaderboard", "hzen"],
+	"textdomain": "hoeveel-zijn-er-nog",
+	"attributes": {
+		"metric": { "type": "string", "default": "total" },
+		"limit": { "type": "integer", "default": 10 },
+		"voertuigsoort": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false },
+	"render": "file:./render.php"
+}

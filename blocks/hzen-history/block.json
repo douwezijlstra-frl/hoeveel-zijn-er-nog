@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "hoeveel-zijn-er-nog/hzen-history",
+	"version": "0.1.0",
+	"title": "HZEN History Chart",
+	"category": "widgets",
+	"icon": "chart-line",
+	"description": "Line chart of historical RDW vehicle counts for a model.",
+	"keywords": ["rdw", "voertuig", "chart", "history", "hzen"],
+	"textdomain": "hoeveel-zijn-er-nog",
+	"attributes": {
+		"merk": { "type": "string", "default": "" },
+		"handelsbenaming": { "type": "string", "default": "" },
+		"voertuigsoort": { "type": "string", "default": "P" },
+		"inrichting": { "type": "string", "default": "" },
+		"range": { "type": "string", "default": "12m" },
+		"metric": { "type": "string", "default": "total" },
+		"height": { "type": "integer", "default": 80 }
+	},
+	"supports": { "html": false },
+	"render": "file:./render.php"
+}

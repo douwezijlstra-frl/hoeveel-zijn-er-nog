@@ -1,0 +1,37 @@
+/**
+ * Hoeveel Zijn Er Nog — Admin styles
+ */
+
+/* History chart container */
+#hzen-history-chart-wrap {
+	max-width: 900px;
+	margin-bottom: 24px;
+}
+
+/* Models list table tweaks */
+.widefat .column-active { width: 80px; }
+.widefat .column-last_snapshot { width: 140px; }
+
+/* Add-model form autocomplete dropdown */
+.hzen-autocomplete-dropdown {
+	position: absolute;
+	z-index: 9999;
+	background: #fff;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	max-height: 200px;
+	overflow-y: auto;
+	min-width: 220px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.13);
+}
+
+.hzen-autocomplete-dropdown li {
+	padding: 6px 12px;
+	cursor: pointer;
+	list-style: none;
+}
+
+.hzen-autocomplete-dropdown li:hover,
+.hzen-autocomplete-dropdown li.hzen-active {
+	background: #f0f6fc;
+}

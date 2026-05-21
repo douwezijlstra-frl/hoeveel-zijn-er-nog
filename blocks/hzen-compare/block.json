@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "hoeveel-zijn-er-nog/hzen-compare",
+	"version": "0.1.0",
+	"title": "HZEN Compare Models",
+	"category": "widgets",
+	"icon": "chart-line",
+	"description": "Multi-line chart comparing historical data for multiple tracked models.",
+	"keywords": ["rdw", "voertuig", "compare", "chart", "hzen"],
+	"textdomain": "hoeveel-zijn-er-nog",
+	"attributes": {
+		"models": { "type": "string", "default": "" },
+		"metric": { "type": "string", "default": "total" },
+		"range": { "type": "string", "default": "12m" },
+		"height": { "type": "integer", "default": 80 }
+	},
+	"supports": { "html": false },
+	"render": "file:./render.php"
+}
